@@ -55,3 +55,24 @@ SELECT dept.name, COUNT(teacher.id) FROM
  teacher right JOIN dept 
 ON dept.id = teacher.dept
 GROUP BY dept.name
+
+9.
+Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2 and 'Art' otherwise.
+SELECT teacher.name
+      ,CASE WHEN teacher.dept = 1 OR teacher.dept = 2
+            THEN 'Sci'
+            ELSE 'Art'
+       END
+  FROM teacher
+
+10.
+Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2, show 'Art' if the teacher's dept is 3 and 'None' otherwise.
+
+SELECT teacher.name
+      ,CASE WHEN teacher.dept = 1 OR teacher.dept = 2
+            THEN 'Sci'
+                WHEN teacher.dept is NULL
+            THEN 'None'
+            ELSE 'Art'
+       END
+  FROM teacher
